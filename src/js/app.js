@@ -1,3 +1,4 @@
+import { left, right } from "@popperjs/core";
 import "../style/index.css";
 
 /**
@@ -29,18 +30,32 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let name = variables.name != null ? variables.name : "Name";
+  let lastName = variables.lastname != null ? variables.lastname : "lastName";
+
+  let userTwitter =
+    variables.twitter !== null ? variables.twitter : "Elon Musk";
+  let userGitHub = variables.github !== null ? variables.github : "4geeks";
+  let userLinkedIn =
+    variables.linkedin !== null ? variables.linkedin : "Carlos_Peña";
+  let userInstagram =
+    variables.instagram != null ? variables.instagram : "cristiano";
+  let country = variables.country != null ? variables.country : "country";
+  let city = variables.city != null ? variables.city : "city";
+  let role = variables.role != null ? variables.role : "role";
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${name} ${lastName}</h1>
+          <h2>${role}</h2>
+          <h3>${city}, ${country}</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href="https://twitter.com/${userTwitter}" target= "_blank" ><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${userGitHub}"target= "_blank"><i class="fab fa-github"></i> </a></li>
+            <li><a href="https://linkedin.com/in/${userLinkedIn}"target= "_blank"><i class="fab fa-linkedin"></i> </a></li>
+            <li><a href="https://instagram.com/${userInstagram}"target= "_blank"><i class="fab fa-instagram"></i> </a></li>
           </ul>
         </div>
     `;
@@ -61,7 +76,7 @@ window.onload = function() {
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
